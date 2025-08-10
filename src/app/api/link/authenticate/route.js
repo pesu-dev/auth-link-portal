@@ -166,6 +166,7 @@ export async function GET(request) {
     });
   } catch (error) {
     await sendErrorLogsToDiscord({
+      content: `<@${discordUser.id}>`,
       embed: {
         title: "Unknown Error in Authentication",
         color: 0xff0000,
