@@ -60,6 +60,7 @@ export async function GET(request) {
 
     if (response.status !== 200 || !response.data?.status) {
       await sendErrorLogsToDiscord({
+        content: `<@${discordUser.id}>`,
         embed: {
           title: "PESU Auth Error",
           color: 0xff0000,
