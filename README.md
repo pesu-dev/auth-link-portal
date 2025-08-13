@@ -20,8 +20,6 @@ Using this, will redirect you to a site where you can login via Discord and then
 
 ### For Developers and Contributors
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 1. For current work, make sure to refer the [Project Board](https://github.com/orgs/pesu-dev/projects/4/views/11) to track ongoing work, issues and feature requests.
 2. Read the [contribution guidelines](.github/CONTRIBUTING.md) to understand our standards & workflow before submitting changes.
 3. In order to contribute:
@@ -32,6 +30,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 For detailed development setup and contribution instructions, see our [Contribution Guide](.github/CONTRIBUTING.md).
 
 ## Architecture and setup
+
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ### Project Structure
 
@@ -65,6 +66,90 @@ auth-link-portal/
 │   ├── SECURITY.md     # Security policy
 ```
 
+---
+
+### Codebase Coverage
+
+#### `src/app/` (Pages & API)
+
+- **`page.js`**: Main landing page. Handles user state and displays login or dashboard UI.
+- **`layout.js`**: Root layout for all pages. Sets up global providers and the navbar.
+- **`globals.css`**: Global styles using Tailwind CSS.
+- **`auth/page.js`**: Handles Discord OAuth callback, validates state, fetches user info, and sets up session.
+- **`login/page.js`**: Initiates Discord OAuth login flow, generates session state, and redirects to Discord.
+- **`link/page.js`**: UI for linking Discord and PESU Academy accounts. Handles form submission and linking logic.
+- **`placements/page.js`**: Lets users select a year to view placement data.
+- **`placements/[year]/page.js`**: Redirects to the placement spreadsheet for the selected year.
+- **`api/`**: Contains API routes for authentication, user info, linking, and logout.
+  - **`api/user/route.js`**: Returns Discord user info for the current session.
+  - **`api/token/route.js`**: Exchanges Discord OAuth code for access token, creates a JWT session, and sets a cookie.
+  - **`api/logout/route.js`**: Logs out the user, revokes the Discord token, and clears the session cookie.
+  - **`api/link/authenticate/route.js`**: Authenticates PESU Academy credentials, encrypts user info, and returns a token.
+  - **`api/link/complete/route.js`**: Completes the linking process, assigns Discord roles, updates backend, and sends logs.
+
+#### `src/components/`
+
+- **`navbar.jsx`**: Responsive navigation bar. Shows login, placements, event posting, and linking options based on user state.
+
+#### `src/utils/`
+
+- **`config.js`**: Contains all constants for Discord guild, roles, channels, and placement links.
+- **`helpers.js`**: Utility functions for API responses, Discord user fetching, error logging, and DM message formatting.
+- **`store/`**: Zustand-based state management.
+  - **`provider.js`**: React context provider for the persistent store.
+  - **`stores.js`**: Store definition with persistence and hydration logic.
+
+#### `src/middleware.js`
+
+- Handles authentication and CORS for API routes. Verifies JWT session tokens and manages allowed origins.
+
+#### `public/` and `src/assets/`
+
+- Static files and SVGs used in the UI.
+
+#### `.github/`
+
+- Contains GitHub Actions workflow for production deployment, contribution guidelines, and security policy
+
+---
+
+### Environment Variables
+
+To run this project, create a `.env` file in the root directory and fill in the required values as shown below. Refer to `.env.example` for the template.
+
+| Variable               | Description                                      | Example/Notes                       |
+|------------------------|--------------------------------------------------|-------------------------------------|
+| `REDIRECT_URI`         | Discord OAuth redirect URI                       | `http://localhost:3000/auth`        |
+| `MONGO_URI`            | MongoDB connection string                        |                                     |
+| `CLIENT_ID`            | Discord OAuth client ID                          |                                     |
+| `CLIENT_SECRET`        | Discord OAuth client secret                      |                                     |
+| `BOT_TOKEN`            | Discord bot token                                |                                     |
+| `APP_ENV`              | Application environment (`dev`, `prod`, etc.)    | `dev`                               |
+| `JWT_SESSION_SECRET`   | Secret for signing JWT session tokens            |                                     |
+| `BACKEND_API_URL`      | Backend API base URL                             | `http://localhost:3001/api`         |
+| `BACKEND_API_TOKEN`    | Token for authenticating with backend API        |                                     |
+
+**How to set up:**
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Fill in all required values in `.env` before running the project.
+
+### Running locally
+
+First, run the below command to install necessary dependencies -
+
+
+```bash
+npm install 
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
 
 First, run the development server:
 
@@ -78,23 +163,28 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the webpage running locally.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+**👉 [Read our detailed Contributing Guide](.github/CONTRIBUTING.md)** for complete setup instructions and development workflow.
 
-To learn more about Next.js, take a look at the following resources:
+## 🔐 Security and Privacy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **No Credential Storage**: The website does not store Discord or PESU passwords
+- **Secure Database**: All data is stored securely in MongoDB with proper access controls
+- **Role-based Access**: Commands are restricted based on user permissions and server roles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📊 Project Status
 
-## Deploy on Vercel
+- **Active Development**: The website is actively maintained and updated
+- **Community Driven**: Features are developed based on community needs
+- **Production Ready**: Currently deployed and serving the PESU Discord community
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+For questions, support, or feature requests, please visit our [project board](https://github.com/orgs/pesu-dev/projects/4/views/11) or join the discussion on the PESU Discord server.
