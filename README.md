@@ -5,7 +5,7 @@
 [![Issues](https://img.shields.io/github/issues/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/issues)
 [![Project Board](https://img.shields.io/badge/project-board-blue)](https://github.com/orgs/pesu-dev/projects/4/views/11)
 
-This is a website that handles verification of the students joining PESU Discord Server, by authenticating them using Discord OAuth thus providing access to the rest of the server.
+This is a website that handles verification of the students joining PESU Discord Server, by authenticating them using Discord OAuth thus providing access to the rest of the server. This project is currently, actively maintained and updated.
 
 The bot is built with security and privacy in mind, ensuring safe and effective community management while maintaining user confidentiality.
 
@@ -14,7 +14,7 @@ The bot is built with security and privacy in mind, ensuring safe and effective 
 
 ### For Users
 
-This is currently active in the PESU Discord Server. You can click on [welcome message](https://discord.com/channels/742797665301168220/742946580285620225/1399618247724367963)
+This is currently active in the [PESU Discord Server](https://discord.gg/eZ3uFs2). You can click on the first messsge in `#welcome`
 
 Using this, will redirect you to a site where you can login via Discord and then you will be authenticated 
 
@@ -142,12 +142,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **No Credential Storage**: The website does not store Discord or PESU passwords
 - **Secure Database**: All data is stored securely in MongoDB with proper access controls
 - **Role-based Access**: Commands are restricted based on user permissions and server roles
-
-## 📊 Project Status
-
-- **Active Development**: The website is actively maintained and updated
-- **Community Driven**: Features are developed based on community needs
-- **Production Ready**: Currently deployed and serving the PESU Discord community
 
 ## 📄 License
 
