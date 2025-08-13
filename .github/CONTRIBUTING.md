@@ -63,8 +63,6 @@ This section provides instructions for setting up your development environment t
 
 ### Setting Up Your Environment
 
-#### Using pip
-
 1. **Clone the repository (or your fork) and navigate to the project:**
    ```bash
    # Option 1: Clone the main repository
