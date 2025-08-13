@@ -1,8 +1,8 @@
 # Auth Link Portal
 
-[![License](https://img.shields.io/github/license/pesu-dev/discord-bot)](https://github.com/pesu-dev/auth-link-portal/blob/main/LICENSE)
-[![Contributors](https://img.shields.io/github/contributors/pesu-dev/discord-bot)](https://github.com/pesu-dev/auth-link-portal/graphs/contributors)
-[![Issues](https://img.shields.io/github/issues/pesu-dev/discord-bot)](https://github.com/pesu-dev/auth-link-portal/issues)
+[![License](https://img.shields.io/github/license/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/blob/main/LICENSE)
+[![Contributors](https://img.shields.io/github/contributors/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/issues)
 [![Project Board](https://img.shields.io/badge/project-board-blue)](https://github.com/orgs/pesu-dev/projects/4/views/11)
 
 This is a website that handles verification of the students joining PESU Discord Server, by authenticating them using Discord OAuth thus providing access to the rest of the server.
