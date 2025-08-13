@@ -72,71 +72,39 @@ auth-link-portal/
 
 #### `src/app/` (Pages & API)
 
-- **`page.js`**: Main landing page. Handles user state and displays login or dashboard UI.
-- **`layout.js`**: Root layout for all pages. Sets up global providers and the navbar.
-- **`globals.css`**: Global styles using Tailwind CSS.
-- **`auth/page.js`**: Handles Discord OAuth callback, validates state, fetches user info, and sets up session.
-- **`login/page.js`**: Initiates Discord OAuth login flow, generates session state, and redirects to Discord.
-- **`link/page.js`**: UI for linking Discord and PESU Academy accounts. Handles form submission and linking logic.
-- **`placements/page.js`**: Lets users select a year to view placement data.
-- **`placements/[year]/page.js`**: Redirects to the placement spreadsheet for the selected year.
-- **`api/`**: Contains API routes for authentication, user info, linking, and logout.
-  - **`api/user/route.js`**: Returns Discord user info for the current session.
-  - **`api/token/route.js`**: Exchanges Discord OAuth code for access token, creates a JWT session, and sets a cookie.
-  - **`api/logout/route.js`**: Logs out the user, revokes the Discord token, and clears the session cookie.
-  - **`api/link/authenticate/route.js`**: Authenticates PESU Academy credentials, encrypts user info, and returns a token.
-  - **`api/link/complete/route.js`**: Completes the linking process, assigns Discord roles, updates backend, and sends logs.
+- **Pages**:  
+  - `page.js`: Main landing page (user state, login/dashboard UI)
+  - `auth/page.js`: Discord OAuth callback and session setup
+  - `login/page.js`: Initiates Discord OAuth login flow
+  - `link/page.js`: UI and logic for linking Discord & PESU accounts
+  - `placements/page.js`, `placements/[year]/page.js`: Placement info and redirects
+
+- **API Routes**:  
+  - `api/user/route.js`, `api/token/route.js`, `api/logout/route.js`, `api/link/authenticate/route.js`, `api/link/complete/route.js`:  
+    Handle authentication, user info, linking, logout, and backend updates
+
+- **Shared Layout & Styles**:  
+  - `layout.js`, `globals.css`: Root layout and global styles
 
 #### `src/components/`
 
-- **`navbar.jsx`**: Responsive navigation bar. Shows login, placements, event posting, and linking options based on user state.
+- **Reusable Components**:  
+  - `navbar.jsx`: Responsive navigation bar (shows options based on user state)
 
 #### `src/utils/`
 
-- **`config.js`**: Contains all constants for Discord guild, roles, channels, and placement links.
-- **`helpers.js`**: Utility functions for API responses, Discord user fetching, error logging, and DM message formatting.
-- **`store/`**: Zustand-based state management.
-  - **`provider.js`**: React context provider for the persistent store.
-  - **`stores.js`**: Store definition with persistence and hydration logic.
+- **Utilities & State Management**:  
+  - `config.js`, `helpers.js`: App constants and helper functions  
+  - `store/` (`provider.js`, `stores.js`): Zustand-based state management
 
 #### `src/middleware.js`
 
-- Handles authentication and CORS for API routes. Verifies JWT session tokens and manages allowed origins.
+- **Middleware**:  
+  - Handles authentication, CORS, and JWT session verification for API routes
 
-#### `public/` and `src/assets/`
 
-- Static files and SVGs used in the UI.
 
-#### `.github/`
-
-- Contains GitHub Actions workflow for production deployment, contribution guidelines, and security policy
-
----
-
-### Environment Variables
-
-To run this project, create a `.env` file in the root directory and fill in the required values as shown below. Refer to `.env.example` for the template.
-
-| Variable               | Description                                      | Example/Notes                       |
-|------------------------|--------------------------------------------------|-------------------------------------|
-| `REDIRECT_URI`         | Discord OAuth redirect URI                       | `http://localhost:3000/auth`        |
-| `MONGO_URI`            | MongoDB connection string                        |                                     |
-| `CLIENT_ID`            | Discord OAuth client ID                          |                                     |
-| `CLIENT_SECRET`        | Discord OAuth client secret                      |                                     |
-| `BOT_TOKEN`            | Discord bot token                                |                                     |
-| `APP_ENV`              | Application environment (`dev`, `prod`, etc.)    | `dev`                               |
-| `JWT_SESSION_SECRET`   | Secret for signing JWT session tokens            |                                     |
-| `BACKEND_API_URL`      | Backend API base URL                             | `http://localhost:3001/api`         |
-| `BACKEND_API_TOKEN`    | Token for authenticating with backend API        |                                     |
-
-**How to set up:**
-1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Fill in all required values in `.env` before running the project.
-
-### Running locally
+## Running locally
 
 First, run the below command to install necessary dependencies -
 
@@ -151,7 +119,7 @@ pnpm install
 bun install
 ```
 
-First, run the development server:
+Then, run the development server:
 
 ```bash
 npm run dev
