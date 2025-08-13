@@ -47,4 +47,4 @@ Auth Link Portal uses several open-source dependencies. We regularly monitor and
 
 While we strive to maintain high security standards, no software is entirely free from vulnerabilities. Use this software at your own risk.
 
-Thank you for helping us keep Auth Link Portal
+Thank you for helping us keep Auth Link Portal secure !
