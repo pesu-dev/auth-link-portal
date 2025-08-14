@@ -19,25 +19,29 @@ Summarize what this PR does:
 - [ ] ⚠️ Breaking change – Backward-incompatible change (API, UI or backend, etc.)
 - [ ] 📝 Documentation update – README, comments, help text, etc.
 - [ ] 🧪 Test suite change – Adds/updates unit, integration, or manual tests
-- [ ] ⚙️ CI/CD pipeline update – GitHub Actions, Docker, etc.,
+- [ ] ⚙️ CI/CD pipeline update – GitHub Actions, Docker, pre-commit, etc.,
 - [ ] 🧹 Refactor – Code cleanup, improvements, or style changes
-- [ ] 🐢 Performance improvement – Faster command responses or reduced resource use
+- [ ] 🐢 Performance improvement – Faster responses or reduced resource use
 - [ ] 🕵️ Logging/debugging – Improved diagnostics, logs, or debug output
 - [ ] 🔧 Tooling – Scripts, benchmarks, or local dev improvements
 - [ ] 🔒 Security fix – Permissions, validation, or OAuth-related vulnerabilities
-- [ ] 🧰 Dependency update – Library or package updates
+- [ ] 🧰 Dependency update – package updates
 
 ---
 
 ## 🧪 How Has This Been Tested?
 
-- [ ] Local Testing - TBD
-- [ ] CI / ESLint - TBD
+- [ ] Unit tests
+- [ ] E2E tests
+- [ ] Integration tests
+- [ ] Manual Testing
+- [ ] CI / pre-commit run
 
 > **Test Environment:**
-> - OS: (e.g., `Linux`)
-> - Python: (e.g., `3.12`)
-> - Discord.py version: (e.g., `2.3.2`)
+> - OS: (e.g., `Linux`, `Windows`)
+> - Node.js: (e.g., `20.x`)
+> - MongoDB: (e.g., `Atlas`, `local`)
+> - Next.js: (e.g., `14.x`)
 > - [ ] Docker build tested
 
 ---
@@ -48,8 +52,12 @@ Summarize what this PR does:
 - [ ] Self-review completed
 - [ ] Added/updated comments
 - [ ] Updated relevant docs (README, help text, etc.)
+- [ ] Added/updated tests
+- [ ] All tests pass locally
+- [ ] Run linting and formatting
+- [ ] Docker image builds and runs
 - [ ] No new warnings or errors introduced
-- [ ] Ran ESlint - TBD
+- [ ] Ran linting and formatting
 - [ ] Changes are backwards compatible (if applicable)
 - [ ] Feature flags or `.env` vars updated (if applicable)
 - [ ] Tested in multiple environments (if applicable)
@@ -64,7 +72,7 @@ Summarize what this PR does:
 - [ ] State management / utils
 - [ ] Discord OAuth/Integrations
 - [ ] App startup/shutdown
-- [ ] CI / ESLint - TBD
+- [ ] CI / pre-commit
 - [ ] Dockerfile / build
 - [ ] Dependencies (`package.json`)
 - [ ] Tooling/scripts

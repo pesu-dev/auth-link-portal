@@ -61,7 +61,7 @@ export const fetchDiscordUser = async (accessToken) => {
 };
 
 export const getDmMessage = (branch, campus, year) => {
-  return `Welcome to our humble little server, where the linking process is more rigorous than getting a security clearance for Area 51. 
+  return `Welcome to our humble little server, where the linking process is more rigorous than getting a security clearance for Area 51.
 
 **Roles added: ${branch}, ${campus} and ${year}. If any of these details are inaccurate or have changed, drop a message in <#${CONSTANTS.GUILD.CHANNELS.LOBBY.ID}> and ping the admin or any moderators.**
 

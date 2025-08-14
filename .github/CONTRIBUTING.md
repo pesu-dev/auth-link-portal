@@ -68,7 +68,7 @@ This section provides instructions for setting up your development environment t
    # Option 1: Clone the main repository
    git clone https://github.com/pesu-dev/auth-link-portal.git
    cd auth-link-portal
-   
+
    # Option 2: Clone your fork
    git clone https://github.com/your-github-username/auth-link-portal.git
    cd auth-link-portal
@@ -227,10 +227,11 @@ To keep the codebase clean and maintainable, please follow these conventions:
 ### ✅ General Guidelines
 
 - Write clean, readable code with meaningful variable and function names
-- Use type hints where appropriate (Python 3.9+ syntax)
+- Use modern JavaScript (ES6+)
 - Keep functions focused and modular
-- Follow PEP 8 style guidelines
-- Use async/await for all Discord.py operations
+- Follow the project's style guidelines
+- Use async/await for all asynchronous operations
+
 
 ---
 
@@ -255,7 +256,7 @@ When creating or working on an issue/PR, feel free to suggest an appropriate lab
 
 If you want to propose a new feature:
 
-1. Check if it already exists on the [project board](https://github.com/orgs/pesu-dev/projects/4/views/8)
+1. Check if it already exists on the [project board](https://github.com/orgs/pesu-dev/projects/4)
 2. Open a new issue with a clear description
 3. Explain the use case and how it benefits the PESU Discord community
 4. Consider Discord's rate limits and bot permissions

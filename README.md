@@ -16,7 +16,7 @@ The bot is built with security and privacy in mind, ensuring safe and effective 
 
 This is currently active in the [PESU Discord Server](https://discord.gg/eZ3uFs2). You can click on the first messsge in `#welcome`
 
-Using this, will redirect you to a site where you can login via Discord and then you will be authenticated 
+Using this, will redirect you to a site where you can login via Discord and then you will be authenticated
 
 ### For Developers and Contributors
 
@@ -72,34 +72,34 @@ auth-link-portal/
 
 #### `src/app/` (Pages & API)
 
-- **Pages**:  
+- **Pages**:
   - `page.js`: Main landing page (user state, login/dashboard UI)
   - `auth/page.js`: Discord OAuth callback and session setup
   - `login/page.js`: Initiates Discord OAuth login flow
   - `link/page.js`: UI and logic for linking Discord & PESU accounts
   - `placements/page.js`, `placements/[year]/page.js`: Placement info and redirects
 
-- **API Routes**:  
-  - `api/user/route.js`, `api/token/route.js`, `api/logout/route.js`, `api/link/authenticate/route.js`, `api/link/complete/route.js`:  
+- **API Routes**:
+  - `api/user/route.js`, `api/token/route.js`, `api/logout/route.js`, `api/link/authenticate/route.js`, `api/link/complete/route.js`:
     Handle authentication, user info, linking, logout, and backend updates
 
-- **Shared Layout & Styles**:  
+- **Shared Layout & Styles**:
   - `layout.js`, `globals.css`: Root layout and global styles
 
 #### `src/components/`
 
-- **Reusable Components**:  
+- **Reusable Components**:
   - `navbar.jsx`: Responsive navigation bar (shows options based on user state)
 
 #### `src/utils/`
 
-- **Utilities & State Management**:  
-  - `config.js`, `helpers.js`: App constants and helper functions  
+- **Utilities & State Management**:
+  - `config.js`, `helpers.js`: App constants and helper functions
   - `store/` (`provider.js`, `stores.js`): Zustand-based state management
 
 #### `src/middleware.js`
 
-- **Middleware**:  
+- **Middleware**:
   - Handles authentication, CORS, and JWT session verification for API routes
 
 
@@ -110,7 +110,7 @@ First, run the below command to install necessary dependencies -
 
 
 ```bash
-npm install 
+npm install
 # or
 yarn install
 # or
