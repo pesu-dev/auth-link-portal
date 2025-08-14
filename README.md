@@ -9,12 +9,12 @@ This is a website that handles verification of the students joining PESU Discord
 
 The bot is built with security and privacy in mind, ensuring safe and effective community management while maintaining user confidentiality.
 
-
+me
 ## Getting Started
 
 ### For Users
 
-This is currently active in the [PESU Discord Server](https://discord.gg/eZ3uFs2). You can click on the first messsge in `#welcome`
+This is currently active in the [PESU Discord Server](https://discord.gg/eZ3uFs2). You can click on the first message in `#welcome`
 
 Using this, will redirect you to a site where you can login via Discord and then you will be authenticated
 
