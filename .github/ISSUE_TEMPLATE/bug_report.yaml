@@ -1,5 +1,5 @@
 name: 🐛 Bug Report
-description: Report an issue with the PESUAuth API
+description: Report an issue with the PESU Auth Link Portal
 labels: ["bug"]
 body:
   - type: markdown
@@ -48,14 +48,6 @@ body:
       placeholder: e.g. "Shows 'Authentication failed' error and redirects to login"
     validations:
       required: true
-
-  - type: input
-    id: version
-    attributes:
-      label: 📦 Project Version
-      placeholder: e.g. 0.1.0
-    validations:
-      required: false
 
   - type: input
     id: commit

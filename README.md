@@ -3,24 +3,24 @@
 [![License](https://img.shields.io/github/license/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/blob/main/LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/graphs/contributors)
 [![Issues](https://img.shields.io/github/issues/pesu-dev/auth-link-portal)](https://github.com/pesu-dev/auth-link-portal/issues)
-[![Project Board](https://img.shields.io/badge/project-board-blue)](https://github.com/orgs/pesu-dev/projects/4/views/11)
+[![Project Board](https://img.shields.io/badge/project-board-blue)](https://github.com/orgs/pesu-dev/projects/4)
 
 This is a website that handles verification of the students joining PESU Discord Server, by authenticating them using Discord OAuth thus providing access to the rest of the server. This project is currently, actively maintained and updated.
 
-The bot is built with security and privacy in mind, ensuring safe and effective community management while maintaining user confidentiality.
+The application is built with security and privacy in mind, ensuring safe and effective community management while maintaining user confidentiality.
 
 me
 ## Getting Started
 
 ### For Users
 
-This is currently active in the [PESU Discord Server](https://discord.gg/eZ3uFs2). You can click on the first message in `#welcome`
+This is currently active in the [PESU Discord Server](https://discord.gg/eZ3uFs2). You can click on [this link](https://pesudiscord.netlify.app/link) to get verified.
 
 Using this, will redirect you to a site where you can login via Discord and then you will be authenticated
 
 ### For Developers and Contributors
 
-1. For current work, make sure to refer the [Project Board](https://github.com/orgs/pesu-dev/projects/4/views/11) to track ongoing work, issues and feature requests.
+1. For current work, make sure to refer the [Project Board](https://github.com/orgs/pesu-dev/projects/4) to track ongoing work, issues and feature requests.
 2. Read the [contribution guidelines](.github/CONTRIBUTING.md) to understand our standards & workflow before submitting changes.
 3. In order to contribute:
    - Make changes in a new branch.
@@ -149,4 +149,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-For questions, support, or feature requests, please visit our [project board](https://github.com/orgs/pesu-dev/projects/4/views/11) or join the discussion on the PESU Discord server.
+For questions, support, or feature requests, please visit our [project board](https://github.com/orgs/pesu-dev/projects/4) or join the discussion on the PESU Discord server.

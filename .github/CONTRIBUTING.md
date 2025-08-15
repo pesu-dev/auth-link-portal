@@ -52,7 +52,7 @@ The standard workflow for contributing is as follows:
 
 ## 🛠️ Development Environment Setup
 
-This section provides instructions for setting up your development environment to work on the PESU Discord Bot project.
+This section provides instructions for setting up your development environment to work on the PESU Auth Link Portal project.
 
 ### Prerequisites
 
@@ -202,7 +202,7 @@ Use descriptive commit messages that explain what the change does.
 If you get stuck or have questions:
 
 1. Check the [README.md](../README.md) for setup and usage info.
-2. Review the [project board](https://github.com/orgs/pesu-dev/projects/4/views/11) to see current work and track progress.
+2. Review the [project board](https://github.com/orgs/pesu-dev/projects/4) to see current work and track progress.
 3. Reach out to the maintainers on PESU Discord.
    - Use the appropriate development channels for questions.
    - Search for existing discussions before posting.
