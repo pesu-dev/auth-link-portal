@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_URI")
+}
+
+model Link {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  prn       String
+  linkedAt  DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([userId, prn])
+  @@index([userId])
+  @@index([prn])
+  @@map("link")
+}
+
+model AnonBan {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  reason    String
+  bannedAt  DateTime  @default(now())
+  expiresAt DateTime?
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([userId, active])
+  @@map("anonban")
+}
+
+model Student {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  prn         String   @unique
+  branchFull  String
+  branchShort String
+  year        String
+  campusCode  Int
+  campusShort String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("student")
+}
