@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createResponse, fetchDiscordUser } from "@/utils/helpers";
-import { connectToDatabase } from "@/lib/prisma";
-import { dbService } from "@/lib/dbservice";
+import { connectToDatabase } from "@/utils/prisma";
+import { dbService } from "@/utils/dbservice";
 import { CONSTANTS } from "@/utils/config";
 import { getDmMessage, sendErrorLogsToDiscord } from "@/utils/helpers";
 

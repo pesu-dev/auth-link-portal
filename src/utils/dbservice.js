@@ -1,4 +1,4 @@
-import prisma from '@/lib/prisma';
+import prisma from '@/utils/prisma';
 
 // Database service functions
 export const dbService = {
