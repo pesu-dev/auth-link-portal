@@ -83,6 +83,7 @@ export const CONSTANTS = {
     "Civil Engineering": "CE",
     "Biotechnology": "BT",
     "Bachelor of Computer Applications": "BCA",
+    "Bachelor of Commerce": "B.Com",
     "Bachelor of Business Administration": "BBA",
     "-Bachelor of Business Administration": "BBA",
   },
