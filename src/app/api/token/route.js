@@ -2,6 +2,8 @@ import axios from "axios";
 import { createResponse } from "@/utils/helpers";
 import { CONSTANTS } from "@/utils/config";
 import { getDmMessage, sendErrorLogsToDiscord } from "@/utils/helpers";
+import { connectToDatabase } from "@/utils/prisma";
+import { dbService } from "@/utils/dbservice";
 import crypt from "crypto";
 
 export async function GET(request) {
@@ -72,22 +74,13 @@ export async function GET(request) {
   const { discordUser, pesuUserProfile } = tokenData;
 
   try {
-    // Connect to the backend-api
-    const apiUrl = process.env.BACKEND_API_URL || "http://localhost:3001/api";
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.BACKEND_API_TOKEN}`,
-    };
+    // Connect to Database
+    await connectToDatabase();
 
     try {
-      const prnExistsRoute = `${apiUrl}/check-prn/${pesuUserProfile.prn}`;
-      const prnExistsResponse = await axios.get(prnExistsRoute, {
-        headers,
-      });
-      if (
-        prnExistsResponse.data.success &&
-        prnExistsResponse.data.data.exists
-      ) {
+      // Check if PRN is already linked using Prisma
+      const prnExists = await dbService.link.prnExists(pesuUserProfile.prn);
+      if (prnExists) {
         return createResponse(
           400,
           "PRN already linked",
@@ -113,9 +106,7 @@ export async function GET(request) {
             },
             {
               name: "Error",
-              value: `${error.message || "Unknown error"} | ${
-                error.response?.data?.message || "No additional info"
-              }`,
+              value: `${error.message || "Unknown error"}`,
             },
           ],
         },
@@ -217,10 +208,9 @@ export async function GET(request) {
       );
     }
 
-    // Create (or update existing) student record
+    // Create (or update existing) student record using Prisma
     try {
-      const studentRoute = `${apiUrl}/student`;
-      const studentData = {
+      await dbService.student.createOrUpdateStudentRecord({
         prn: pesuUserProfile.prn,
         branch: {
           full: pesuUserProfile.branch,
@@ -231,53 +221,7 @@ export async function GET(request) {
           code: pesuUserProfile.campus_code,
           short: pesuUserProfile.campus,
         },
-      };
-      const studentResponse = await axios.post(studentRoute, studentData, {
-        headers,
       });
-      if (!studentResponse.data.success) {
-        await sendErrorLogsToDiscord({
-          content: `<@${discordUser.id}>`,
-          embed: {
-            title: "Failed to create/update student record",
-            color: 0xff0000,
-            timestamp: new Date(),
-            footer: {
-              text: "PESU Bot",
-            },
-            fields: [
-              {
-                name: "Username",
-                value: discordUser.username,
-                inline: true,
-              },
-              {
-                name: "User ID",
-                value: discordUser.id,
-                inline: true,
-              },
-              { name: "PRN", value: pesuUserProfile.prn, inline: true },
-              { name: "Branch", value: branchShortCode, inline: true },
-              { name: "Campus", value: pesuUserProfile.campus, inline: true },
-              { name: "Year", value: year, inline: true },
-              {
-                name: "Error",
-                value:
-                  studentResponse.data.message ||
-                  "Unknown error creating/updating student record",
-                inline: false,
-              },
-            ],
-          },
-        });
-        return createResponse(
-          500,
-          "Failed to create/update student record",
-          null,
-          studentResponse.data.message ||
-            "An error occurred while creating/updating the student record"
-        );
-      }
     } catch (error) {
       await sendErrorLogsToDiscord({
         content: `<@${discordUser.id}>`,
@@ -305,9 +249,7 @@ export async function GET(request) {
             { name: "Year", value: year, inline: true },
             {
               name: "Error",
-              value: `${error.message || "Unknown error"} | ${
-                error.response?.data?.message || "No additional info"
-              }`,
+              value: `${error.message || "Unknown error"}`,
               inline: false,
             },
           ],
@@ -384,16 +326,9 @@ export async function GET(request) {
 
     let promises = [];
 
-    // Add the user to linked collection
+    // Add the user to linked collection using Prisma
     promises.push(
-      axios.post(
-        `${apiUrl}/link`,
-        {
-          userId: discordUser.id,
-          prn: pesuUserProfile.prn,
-        },
-        { headers }
-      )
+      dbService.link.createLinkRecord(discordUser.id, pesuUserProfile.prn)
     );
 
     // DM the user with the welcome message
@@ -493,9 +428,7 @@ export async function GET(request) {
         fields: [
           {
             name: "Error",
-            value: `${error.message || "Unknown error"} | ${
-              error.response?.data?.message || "No additional info"
-            }`,
+            value: `${error.message || "Unknown error"}`,
             inline: false,
           },
         ],
