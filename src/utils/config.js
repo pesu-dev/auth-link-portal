@@ -28,7 +28,6 @@ export const CONSTANTS = {
         "Psychology": "1023510685705044009",
         "Sports Management": "1023511154649223240",
         "Bachelor of Pharmacy": "1023512100724817940",
-        "Bachelor of Commerce" : "984846642354192484",
         "Nursing": "1061350434675101726",
         "CA": "1086905421291335711",
         "International Accounting and Finance": "1129414449485316176",
