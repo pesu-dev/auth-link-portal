@@ -208,17 +208,13 @@ export async function GET(request) {
     try {
       const studentData = {
         prn: pesuUserProfile.prn,
-        branch: {
-          full: pesuUserProfile.branch,
-          short: branchShortCode,
-        },
+        branchFull: pesuUserProfile.branch,
+        branchShort: branchShortCode,
         year: year,
-        campus: {
-          code: pesuUserProfile.campus_code,
-          short: pesuUserProfile.campus,
-        },
+        campusCode: pesuUserProfile.campus_code,
+        campusShort: pesuUserProfile.campus,
       };
-      
+
       await dbService.student.createOrUpdateStudentRecord(studentData);
     } catch (error) {
       await sendErrorLogsToDiscord({
@@ -274,7 +270,7 @@ export async function GET(request) {
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bot ${process.env.BOT_TOKEN}`,
+            Authorization: `Bot ${process.env.BOT_TOKEN}`,
           },
         }
       );
@@ -339,7 +335,7 @@ export async function GET(request) {
           },
           {
             headers: {
-              "Authorization": `Bot ${process.env.BOT_TOKEN}`,
+              Authorization: `Bot ${process.env.BOT_TOKEN}`,
               "Content-Type": "application/json",
             },
           }
@@ -356,7 +352,7 @@ export async function GET(request) {
             },
             {
               headers: {
-                "Authorization": `Bot ${process.env.BOT_TOKEN}`,
+                Authorization: `Bot ${process.env.BOT_TOKEN}`,
                 "Content-Type": "application/json",
               },
             }
@@ -393,7 +389,7 @@ export async function GET(request) {
         },
         {
           headers: {
-            "Authorization": `Bot ${process.env.BOT_TOKEN}`,
+            Authorization: `Bot ${process.env.BOT_TOKEN}`,
             "Content-Type": "application/json",
           },
         }

@@ -1,4 +1,4 @@
-import prisma from '@/utils/prisma';
+import prisma from "@/utils/prisma";
 
 // Database service functions
 export const dbService = {
@@ -6,32 +6,32 @@ export const dbService = {
   link: {
     prnExists: async (prn) => {
       const link = await prisma.link.findFirst({
-        where: { prn }
+        where: { prn },
       });
       return !!link;
     },
-    
+
     createLinkRecord: async (userId, prn) => {
       return await prisma.link.create({
         data: {
           userId,
           prn,
           linkedAt: new Date(),
-        }
+        },
       });
     },
 
     findByUserId: async (userId) => {
       return await prisma.link.findFirst({
-        where: { userId }
+        where: { userId },
       });
     },
 
     findByPrn: async (prn) => {
       return await prisma.link.findFirst({
-        where: { prn }
+        where: { prn },
       });
-    }
+    },
   },
 
   // Student operations
@@ -40,34 +40,34 @@ export const dbService = {
       return await prisma.student.upsert({
         where: { prn: studentData.prn },
         update: {
-          branchFull: studentData.branch.full,
-          branchShort: studentData.branch.short,
+          branchFull: studentData.branchFull,
+          branchShort: studentData.branchShort,
           year: studentData.year,
-          campusCode: studentData.campus.code,
-          campusShort: studentData.campus.short,
+          campusCode: studentData.campusCode,
+          campusShort: studentData.campusShort,
         },
         create: {
           prn: studentData.prn,
-          branchFull: studentData.branch.full,
-          branchShort: studentData.branch.short,
+          branchFull: studentData.branchFull,
+          branchShort: studentData.branchShort,
           year: studentData.year,
-          campusCode: studentData.campus.code,
-          campusShort: studentData.campus.short,
-        }
+          campusCode: studentData.campusCode,
+          campusShort: studentData.campusShort,
+        },
       });
     },
 
     findByPrn: async (prn) => {
       return await prisma.student.findUnique({
-        where: { prn }
+        where: { prn },
       });
     },
 
     findByBranch: async (branchShort) => {
       return await prisma.student.findMany({
-        where: { branchShort }
+        where: { branchShort },
       });
-    }
+    },
   },
 
   // AnonBan operations
@@ -76,22 +76,22 @@ export const dbService = {
       return await prisma.anonBan.findFirst({
         where: {
           userId,
-          active: true
-        }
+          active: true,
+        },
       });
     },
 
     create: async (data) => {
       return await prisma.anonBan.create({
-        data
+        data,
       });
     },
 
     deactivate: async (id) => {
       return await prisma.anonBan.update({
         where: { id },
-        data: { active: false }
+        data: { active: false },
       });
-    }
-  }
+    },
+  },
 };

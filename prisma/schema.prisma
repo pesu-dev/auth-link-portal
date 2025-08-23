@@ -8,6 +8,11 @@ datasource db {
   url      = env("MONGO_URI")
 }
 
+enum CampusShort {
+  RR
+  EC
+}
+
 model Link {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String
@@ -43,7 +48,7 @@ model Student {
   branchShort   String
   year          String
   campusCode    Int
-  campusShort   String
+  campusShort   CampusShort
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
