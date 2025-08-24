@@ -40,19 +40,27 @@ export const dbService = {
       return await prisma.student.upsert({
         where: { prn: studentData.prn },
         update: {
-          branchFull: studentData.branchFull,
-          branchShort: studentData.branchShort,
+          branch: {
+            full: studentData.branchFull,
+            short: studentData.branchShort,
+          },
           year: studentData.year,
-          campusCode: studentData.campusCode,
-          campusShort: studentData.campusShort,
+          campus: {
+            code: studentData.campusCode,
+            short: studentData.campusShort,
+          },
         },
         create: {
           prn: studentData.prn,
-          branchFull: studentData.branchFull,
-          branchShort: studentData.branchShort,
+          branch: {
+            full: studentData.branchFull,
+            short: studentData.branchShort,
+          },
           year: studentData.year,
-          campusCode: studentData.campusCode,
-          campusShort: studentData.campusShort,
+          campus: {
+            code: studentData.campusCode,
+            short: studentData.campusShort,
+          },
         },
       });
     },
@@ -65,7 +73,11 @@ export const dbService = {
 
     findByBranch: async (branchShort) => {
       return await prisma.student.findMany({
-        where: { branchShort },
+        where: {
+          branch: {
+            short: branchShort,
+          },
+        },
       });
     },
   },
