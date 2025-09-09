@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createResponse, fetchDiscordUser } from "@/utils/helpers";
 import { sendErrorLogsToDiscord } from "@/utils/helpers";
+import { isValidPrnOrSrn } from "@/utils/helpers";
 import crypt from "crypto";
 
 export async function GET(request) {
