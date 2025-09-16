@@ -91,3 +91,11 @@ export const sendErrorLogsToDiscord = async (payload) => {
     console.error("Error sending error log to Discord:", error);
   }
 };
+
+export function isValidPrnOrSrn(input) {
+  // PRN: PESxyyyyzzzzz (e.g., PES1202101234)
+  const prnRegex = /^PES[12]\d{9}$/i;
+  // SRN: PESxzzyyccnnn (e.g., PES1UG23CS123)
+  const srnRegex = /^PES[12](UG|PG)\d{2}[A-Z]{2}\d{3}$/i;
+  return prnRegex.test(input) || srnRegex.test(input);
+}
