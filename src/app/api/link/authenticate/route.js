@@ -94,7 +94,7 @@ export async function GET(request) {
     // Check if the PESU profile contains all the required fields
     const pesuUserProfile = response.data.profile;
 
-    // Check if its a student
+    // Check if it's a student
     if (!isValidPrnOrSrn(pesuUserProfile.prn)) {
       await sendErrorLogsToDiscord({
         content: `<@${discordUser.id}>`,
