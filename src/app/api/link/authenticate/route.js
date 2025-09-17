@@ -40,6 +40,26 @@ export async function GET(request) {
     );
   }
 
+  // Check if it's a student
+  if (!isValidPrnOrSrn(username)) {
+    sendErrorLogsToDiscord({
+      content: `<@${discordUser.id}>`,
+      embed: {
+        title: "Non-PRN/SRN Link Attempt Detected",
+        color: 0xffa500,
+        timestamp: new Date(),
+        footer: { text: "PESU Bot" },
+        fields: [
+          { name: "Attempted Username", value: username },
+          {
+            name: "Discord User",
+            value: `${discordUser.username} (${discordUser.id})`,
+          },
+        ],
+      },
+    });
+  }
+
   // Run pesu-auth service to authenticate the user
   try {
     const payload = {
@@ -93,28 +113,6 @@ export async function GET(request) {
 
     // Check if the PESU profile contains all the required fields
     const pesuUserProfile = response.data.profile;
-
-    // Check if it's a student
-    if (!isValidPrnOrSrn(pesuUserProfile.prn)) {
-      await sendErrorLogsToDiscord({
-        content: `<@${discordUser.id}>`,
-        embed: {
-          title: "Non-PRN/SRN Link Attempt Detected",
-          color: 0xffa500,
-          timestamp: new Date(),
-          footer: { text: "PESU Bot" },
-          fields: [
-            { name: "Attempted Username", value: username },
-            { name: "Returned PRN", value: pesuUserProfile.prn || "N/A" },
-            {
-              name: "Discord User",
-              value: `${discordUser.username} (${discordUser.id})`,
-            },
-            { name: "Profile", value: JSON.stringify(pesuUserProfile) },
-          ],
-        },
-      });
-    }
 
     for (const field of payload.fields) {
       if (!pesuUserProfile[field]) {
@@ -202,9 +200,8 @@ export async function GET(request) {
         fields: [
           {
             name: "Error",
-            value: `${error.message || "Unknown error"} | ${
-              error.response?.data?.message || "No additional info"
-            }`,
+            value: `${error.message || "Unknown error"} | ${error.response?.data?.message || "No additional info"
+              }`,
             inline: false,
           },
         ],
