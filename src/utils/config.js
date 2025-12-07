@@ -34,6 +34,7 @@ export const CONSTANTS = {
         "Business Analytics": "1136371141330608138",
         "MBA": "1289303483522093127",
         "MBBS": "1336785790730108978",
+        "MCA": "1417954423363207311",
       },
       YEAR: {
         2015: "1119203107130318889",
@@ -87,5 +88,6 @@ export const CONSTANTS = {
     "Bachelor of Business Administration": "BBA",
     "-Bachelor of Business Administration": "BBA",
     "Master of Business Administration": "MBA",
+    "Master of Computer Applications": "MCA",
   },
 };
