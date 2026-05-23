@@ -25,7 +25,7 @@ export const CONSTANTS = {
         "B.Com": "984846642354192484",
         "BBA (Hons) in Business Analytics": "1023509952964341820",
         "B.Com (Hons) with ACCA": "1023510367026036826",
-        "B.DES": "1203251625074884679",
+        "B.Des": "984846630396235850",
         "Psychology": "1023510685705044009",
         "Sports Management": "1023511154649223240",
         "Bachelor of Pharmacy": "1023512100724817940",
