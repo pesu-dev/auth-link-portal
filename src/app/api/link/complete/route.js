@@ -211,7 +211,7 @@ export async function GET(request) {
         branchFull: pesuUserProfile.branch,
         branchShort: branchShortCode,
         year: year,
-        campusCode: pesuUserProfile.campus_code,
+        campusCode: pesuUserProfile.campusCode,
         campusShort: pesuUserProfile.campus,
       };
 

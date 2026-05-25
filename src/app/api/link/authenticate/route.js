@@ -66,7 +66,7 @@ export async function GET(request) {
       username,
       password,
       profile: true,
-      fields: ["prn", "branch", "campus", "campus_code"],
+      fields: ["prn", "branch", "campus", "campusCode"],
     };
 
     const response = await axios.post(
