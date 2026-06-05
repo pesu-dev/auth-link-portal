@@ -91,6 +91,5 @@ export const CONSTANTS = {
     "Master of Business Administration": "MBA",
     "Master of Computer Applications": "MCA",
     "Bachelor of Design": "B.DES",
-    "Strategic Finance": "Strategic Finance",
   },
 };
